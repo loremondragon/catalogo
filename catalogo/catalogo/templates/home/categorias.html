@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Categorias
+{% endblock %}
+
+{% block content %}
+	<h2>
+		Categorias existentes
+	</h2>
+	{% if user.is_authenticated %}
+		<a class = "btn btn-primary" href="{% url 'vista_agregar_categoria'%}"><li class = "icon-plus"></li>Agregar nueva categoria</a>
+	{% endif %}
+	{% if categorias %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+			</tr>
+		</theader>
+		{% for p in categorias %}
+			<tbody>
+				<tr>
+					<td>{{ p.nombre }}</td>
+					<td>{{p.descripcion }}</td>
+					<td>
+						{% if user.is_authenticated %}
+							<a class = "btn" href="/edit/categoria/{{p.id}}"><li class = "icon-pencil"></li> Editar</a>
+							<a class = "btn" href="/del/categoria/{{p.id}}"><li class = "icon-trash"></li>Eliminar</a>
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No existen categorias actualmente :( </h2>
+	{% endif %}
+{% endblock %}
