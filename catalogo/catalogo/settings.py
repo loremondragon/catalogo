@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'catalogo.apps.home',
     'catalogo.apps.webservices.ws_productos',
     'rest_framework',
-    #'gunicorn',
+    'gunicorn',
     
 )
 AUTH_PROFILE_MODULE = 'home.user_profile'
