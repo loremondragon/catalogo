@@ -1,26 +1,15 @@
 from rest_framework import serializers
 from catalogo.apps.ventas.models import Producto, Marca, Categoria
 
-class producto_serializer (serializers.HyperlinkedModelSerializer):
+class producto_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
-	 model = Producto
-	 fields = ('url','descripcion', 'status', 'nombre', 'imagen', 'precio', 'stock', 'marca', 'categorias',)
-
+		model = Producto
+		fields = ('url','descripcion','status','nombre','imagen','precio','marca','categorias',)
 class marca_serializer(serializers.HyperlinkedModelSerializer):
-	 class Meta:
- 		Model = Marca
-		fields = ('url','nombre', )
-
+	class Meta:
+		model = Marca
+		fields = ('url','nombre',)
 class categoria_serializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Categoria
-		fields = ('url', 'nombre',)
-
-
-			
-	
-		
-
-
-
-		
+		fields = ('url','nombre',)			

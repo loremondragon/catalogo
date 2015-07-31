@@ -1,13 +1,12 @@
 # Django settings for catalogo project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-import os
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-
+AUTH_PROFILE_MODULE = 'home.user_profile'
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -24,7 +23,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['catalogo.herokuapp.com']
+ALLOWED_HOSTS = ['esteban22x.herokuapp.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -51,7 +50,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__),'static/'))
+MEDIA_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__),'media/'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -84,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'h4im(@x!+5i+fe%1)_ob^6x!*w86+f&^^vg7cz4ak-yc5zxl2e'
+SECRET_KEY = 'xsyomc%-ioa2t#$+7jrl*-hkrgor$s(yoc)(3*sp+ebfa*lls1'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -131,9 +130,13 @@ INSTALLED_APPS = (
     'catalogo.apps.webservices.ws_productos',
     'rest_framework',
     'gunicorn',
-    
 )
-AUTH_PROFILE_MODULE = 'home.user_profile'
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+
+}
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 # A sample logging configuration. The only tangible logging
@@ -163,19 +166,10 @@ LOGGING = {
             'propagate': True,
         },
     }
-
 }
 
-REST_FRAMEWORK = {
-    #Use Django's standard `django.contrib.auth` permissions, 
-    #or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
-  #EMAIL_HOST = "smtp.gmail.com" 
-  #EMAIL_PORT = "587"
-  #EMAIL_HOST_USER = "Aqui va el correo"
-  #EMAIL_HOST_PASSWORD = "Mi clave de correo"
-  #EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'hfportilla9@misena.edu.co'
+EMAIL_HOST_PASSWORD = 'fernando'
+EMAIL_USE_TLS = True
