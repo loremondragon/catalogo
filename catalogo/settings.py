@@ -1,30 +1,29 @@
 # Django settings for catalogo project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-import os
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-
+AUTH_PROFILE_MODULE = 'home.user_profile'
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'catalogo',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'root',
+        'USER': '',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',                      # Set to empty string for default.
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
     }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['esteban22x.herokuapp.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -62,7 +61,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__),'static/'))
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -84,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'h4im(@x!+5i+fe%1)_ob^6x!*w86+f&^^vg7cz4ak-yc5zxl2e'
+SECRET_KEY = 'xsyomc%-ioa2t#$+7jrl*-hkrgor$s(yoc)(3*sp+ebfa*lls1'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -122,15 +121,22 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'catalogo.apps.home',
-    'catalogo.apps.ventas',
-    'catalogo.apps.webservices.ws_productos',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'catalogo.apps.ventas',
+    'catalogo.apps.home',
+    'catalogo.apps.webservices.ws_productos',
+    'rest_framework',
+    'gunicorn',
 )
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 
+}
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 # A sample logging configuration. The only tangible logging
@@ -160,12 +166,10 @@ LOGGING = {
             'propagate': True,
         },
     }
-
 }
 
-
-  #EMAIL_HOST = "smtp.gmail.com" 
-  #EMAIL_PORT = "587"
-  #EMAIL_HOST_USER = "Aqui va el correo"
-  #EMAIL_HOST_PASSWORD = "Mi clave de correo"
-  #EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'hfportilla9@misena.edu.co'
+EMAIL_HOST_PASSWORD = 'fernando'
+EMAIL_USE_TLS = True

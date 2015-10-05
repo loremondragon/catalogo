@@ -1,38 +1,38 @@
 <!DOCTYPE HTML>
-
 <html>
 <head>
-	<title>{% block title %} Bienvenidos {% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="/media/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/media/bootstrap/css/bootstrap-responsive.css">
-	<link rel="stylesheet" type="text/css" href="/media/css/excite-bike/jquery-ui-1.10.3.custom.css">
+	<title>{% block title %} Titulo Base {% endblock %}</title>
+	
+		<link rel="stylesheet" type="text/css" href="/media/css/bootstrap-responsive.css"/>
+		<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.css">
 
-	<script src="media/js/ajax.js"></script>
-	<script src="media/js/jquery.js"></script>
-	<script src="media/bootstrap/js/bootstrap.js"></script>
-	<style type="text/css">
-		body{
-			padding-top: 60px;
-			padding-bottom: 40px; 
-		}
-		.hero-unit{ padding-top: 39px;}
-		.sidebar-nav{ padding: 9px;}
 
-	</style>
+<script type="text/javascript" src="/media/js/ajax.js"></script>
+<script type="text/javascript" src="/media/js/jquery.js"></script>
+<script type="text/javascript" src="/media/js/jquery-ui.js"></script>
+
+<style type="text/css">
+	body{
+		padding-top: 60px;
+		padding-bottom: 40px;
+	}
+	.hero-unit{ padding-top: 39px; }
+	.sidebar-nav{ padding: 9px; }
+
+</style>
 </head>
 <body>
-	
-	<div class="navbar navbar-inverse navbar-fixed-trop">
-		<div class ="navbar-inner">
-			<a class="brand" href="{% url 'vista_principal'}"> catalogo de productos</a>
-			<ul class= "nav">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<a class="brand" href="{% url 'vista_principal' %}">Catalogo de Productos </a>
+			<ul class="nav">
 				<li><a href="/productos/page/1">Productos</a></li>
-				<li><a href="{% url 'vista_about' %}">Acerca de ...</a></li>
+				<li><a href="{% url 'vista_about' %}">Acerca de..</a></li>
 				<li><a href="{% url 'vista_contacto' %}">Contacto</a></li>
 				{% if user.is_authenticated %}
-					<li><a href="{% url 'vista_logout' %}"> Cerrar Sesion </a></li>
-				{% else%}
-					<li><a href="{% url 'vista_login' %}"> Login</a></li>
+					<li><a href="{% url 'vista_logout' %}">Cerrar Sesion</a></li>
+				{% else %}
+					<li><a href="{% url 'vista_login' %}">Iniciar Sesion</a></li>
 				{% endif %}
 			</ul>
 		</div>
@@ -44,29 +44,28 @@
 					{% block content %}
 					{% endblock %}
 				</div>
-			</div>
-			<div class="span3">
-				<div class="well sidebar-nav">
-					<div class="nav nav-list">
-						<li class = "nav-header"> Mi catlogo </li>
-						<br>
-						<h4>Informacion</h4>
-						<div class="alert alert-info">
-							<h5>Mi Catalogo Virtual</h5>
-							<p><b>Direccion</b> : Cra 1 # 12-100</p>
-							<p><b>Telefono</b> : 8 393939</p>
-							<p>321 726 9283</p>
-							<p>Popayan - Cauca</p>
-						</div>
-						<div aling="center">
-						<img src="/media/images/Lighthouse.jpg">> 
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
+			 </div>
+			 <div class="span3">
+			 	<div class="well sidebar-nav">
+			 		<div class="nav nav-list">
+			 			<li class="nav-header">Mi Catalogo</li>
+			 			<br>
+			 			<h4>Informacion</h4>
+			 			<div class="alert alert-info">
+			 				<h5>Mi Catalogo Virtual</h5>
+			 				<p><b>Direccion:</b> Cra 3 N 5 - 50</p>
+			 				<p><b>Telefono:</b> 8112121</p>
+			 				<p>3215696013 - 8235690 </p>
+			 				<p>Popayork - Cauca</p>
+			 			</div>
+			 			<div align="center">
+			 				<img src="/media/images/django.gif">
+			 			</div>
+			 		</div>
+			 	</div>
+			 </div>
+			</br>
 		</div>
 	</div>
 </body>
-
 </html>

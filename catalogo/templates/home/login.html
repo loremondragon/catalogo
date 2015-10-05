@@ -4,12 +4,12 @@
 	Login
 {% endblock %}
 
-{% block content %}
-		<form action="." method = "POST" align="center">
-			{% csrf_token %}
-			{{mensaje}}
-			{{form.as_p}}
-			<input type  = "submit" value= "login">
 
-		</form>
+{% block content %}
+	<form action="." method="POST" align="center">
+		{% csrf_token %}
+		{{mensaje}}
+		{{form.as_p}}
+		<input class="btn btn-success" type="submit" value="login"/>
+	</form>
 {% endblock %}
